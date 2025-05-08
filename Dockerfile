@@ -1,28 +1,9 @@
-FROM python:3.10.17-alpine3.20
+FROM python:3.8.5-slim-buster
 
 WORKDIR /app
 
-# Install build dependencies for scientific packages
-RUN apk add --no-cache \
-    build-base \
-    gcc \
-    g++ \
-    gfortran \
-    musl-dev \
-    openblas-dev \
-    lapack-dev \
-    python3-dev
+COPY . /app
 
-# Upgrade pip
-RUN pip install --upgrade pip
-
-# Copy requirements and install
-COPY requirements.txt .
-
-# Install packages with pre-built wheels when possible
-RUN pip install --no-cache-dir --prefer-binary -r requirements.txt
-
-# Copy application code
-COPY . .
+RUN pip install -r requirements.txt
 
 CMD ["python3", "app.py"]
