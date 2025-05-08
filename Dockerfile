@@ -1,16 +1,6 @@
-FROM python:3.10.17-alpine3.20
+FROM python:3.10.17-slim-bullseye
 
 WORKDIR /app
-
-# Install build dependencies
-RUN apk add --no-cache \
-    gcc \
-    g++ \
-    musl-dev \
-    linux-headers \
-    lapack-dev \
-    openblas-dev \
-    python3-dev
 
 # Copy requirements and install
 COPY requirements.txt /app/
