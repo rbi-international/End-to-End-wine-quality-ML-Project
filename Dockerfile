@@ -14,20 +14,20 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Upgrade pip and install wheel
-RUN pip install --upgrade pip wheel setuptools
+# Upgrade pip, setuptools, and wheel
+RUN pip install --upgrade pip setuptools wheel
 
-# Copy requirements files
-COPY requirements-base.txt /app/
+# Create a requirements file without the -e . line
 COPY requirements.txt /app/
+RUN grep -v "^-e" requirements.txt > requirements_temp.txt
 
-# Install base requirements first
-RUN pip install --no-cache-dir -r requirements-base.txt
+# Install most dependencies first
+RUN pip install --no-cache-dir -r requirements_temp.txt
 
-# Copy all code
+# Copy the rest of the application
 COPY . /app/
 
-# Install in editable mode
+# Finally install the package in editable mode
 RUN pip install -e .
 
 CMD ["python3", "app.py"]
