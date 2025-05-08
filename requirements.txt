@@ -1,6 +1,6 @@
 pandas==2.2.3
 notebook==7.0.6
-numpy==1.26.4
+numpy
 scikit-learn
 matplotlib==3.8.3
 python-box==7.3.2
