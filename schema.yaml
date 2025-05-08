@@ -1,0 +1,26 @@
+# schema.yaml
+#
+# This file defines the data schema for the wine quality dataset.
+# It provides information about column data types and identifies the target variable.
+# This schema is used for data validation and preprocessing in the ML pipeline.
+
+# Column specifications
+# Each column is mapped to its expected data type to ensure data consistency
+COLUMNS:
+  fixed acidity: float64          # Acidity from non-volatile acids
+  volatile acidity: float64       # Acidity from volatile acids like acetic acid
+  citric acid: float64            # Citric acid content in g/L
+  residual sugar: float64         # Amount of sugar remaining after fermentation in g/L
+  chlorides: float64              # Salt content in g/L
+  free sulfur dioxide: float64    # Free form of SO2 in mg/L
+  total sulfur dioxide: float64   # Total SO2 in mg/L (free + bound forms)
+  density: float64                # Density of the wine in g/cm³
+  pH: float64                     # Acidity/alkalinity scale (0-14)
+  sulphates: float64              # Potassium sulphate content in g/L
+  alcohol: float64                # Alcohol content by volume in %
+  quality: int64                  # Target variable - wine quality score (0-10)
+
+# Target column specification
+# Identifies which column is the prediction target for the ML model
+TARGET_COLUMN:
+  name: quality                   # The column to be predicted by the model

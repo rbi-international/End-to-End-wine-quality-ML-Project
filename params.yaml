@@ -1,0 +1,15 @@
+# Model Hyperparameters
+# These parameters control the behavior of the ElasticNet regression model
+
+ElasticNet:
+  # Alpha parameter controls the overall regularization strength
+  # Higher values increase regularization and may reduce overfitting
+  # Range: Positive float, typically between 0.0001 and 1.0
+  alpha: 0.2
+  
+  # L1 ratio parameter controls the mix of L1 and L2 regularization
+  # 0.0 = Ridge regression (L2 only)
+  # 1.0 = Lasso regression (L1 only)
+  # 0.1 = 10% L1 and 90% L2 regularization
+  # Range: Float between 0 and 1
+  l1_ratio: 0.1
